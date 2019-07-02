@@ -64,6 +64,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let planeNode = SCNNode(geometry: plane)
             
+            planeNode.eulerAngles.x = -.pi / 2 
+            
             node.addChildNode(planeNode)
             
         }
