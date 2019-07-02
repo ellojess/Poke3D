@@ -62,9 +62,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
             
+            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.5)
+            
             let planeNode = SCNNode(geometry: plane)
             
-            planeNode.eulerAngles.x = -.pi / 2 
+            //-.pi / 2 = 90 degrees in radians, - makes it counterclockwise
+            planeNode.eulerAngles.x = -.pi / 2
             
             node.addChildNode(planeNode)
             
