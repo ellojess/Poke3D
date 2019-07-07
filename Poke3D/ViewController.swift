@@ -54,19 +54,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     // MARK: - ARSCNViewDelegate
     
+    //Anchor is image detected, node is 3D object to be rendered onto screen
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         
         let node = SCNNode()
         
         if let imageAnchor = anchor as? ARImageAnchor {
             
+            //detect image and measure actual physical size
             let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
             
             plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.5)
             
             let planeNode = SCNNode(geometry: plane)
             
-            //-.pi / 2 = 90 degrees in radians, - makes it counterclockwise
+            //-.pi / 2 = 90 degrees in radians, ' - 'makes it counterclockwise
+            //plane expressed horizontally
             planeNode.eulerAngles.x = -.pi / 2
             
             node.addChildNode(planeNode)
