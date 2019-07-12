@@ -80,6 +80,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 
                 if let pokeNode = pokeScene.rootNode.childNodes.first{
                     
+                    pokeNode.eulerAngles.x = .pi / 2
+                    
                     planeNode.addChildNode(pokeNode)
                     
                 }
